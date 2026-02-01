@@ -1,0 +1,51 @@
+<% layout("/layouts/boilerplate") %>
+
+    <section class="form-section">
+        <div class="form-card">
+            <h2>Edit Listing</h2>
+
+            <form action="/listings/<%= listing._id %>?_method=PUT" method="POST" class="listing-form needs-validation"
+                novalidate enctype="multipart/form-data">
+
+                <div><label>Title</label>
+                    <input type="text" name="listing[title]" value="<%= listing.title %>" required>
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                <div><label>Description</label>
+                    <textarea name="listing[description]" rows="4" required><%= listing.description %></textarea>
+                    <div class="invalid-feedback">Please provide some brief Description</div>
+                </div>
+
+                <div>
+                    <p>Original Listing Image</p><br>
+                    <img src=" <%= originalImageUrl %>" alt="Original Image">
+                </div>
+
+                <div><label>Upload New Image</label>
+                    <input type="file" name="listing[image]">
+                    <div class="invalid-feedback">Please choose a image</div>
+                </div>
+
+                <div class="form-row">
+                    <div>
+                        <label>Price (₹ / night)</label>
+                        <input type="number" name="listing[price]" value="<%= listing.price %>" required>
+                        <div class="invalid-feedback">Please provide suitable Price</div>
+                    </div>
+                    <div>
+                        <label>Location</label>
+                        <input type="text" name="listing[location]" value="<%= listing.location %>" required>
+                        <div class="invalid-feedback">Please provide the location</div>
+                    </div>
+                </div>
+
+                <div><label>Country</label>
+                    <input type="text" name="listing[country]" value="<%= listing.country %>" required>
+                    <div class="invalid-feedback">Please select the Country</div>
+                </div>
+
+                <button class="submit-btn">Update Listing</button>
+            </form>
+        </div>
+    </section>

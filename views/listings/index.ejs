@@ -1,0 +1,83 @@
+<% layout("/layouts/boilerplate") %>
+
+    <section class="listings-section">
+
+        <!-- CATEGORY FILTER -->
+        <div class="category-filter">
+
+            <a href="/listings?category=mountain" class="filter-item <%= category === 'mountain' ? 'active' : '' %>">
+                <i class="fa-solid fa-mountain"></i>
+                <span>Mountain</span>
+            </a>
+
+            <a href="/listings?category=pool" class="filter-item <%= category === 'pool' ? 'active' : '' %>">
+                <i class="fa-solid fa-person-swimming"></i>
+                <span>Pool</span>
+            </a>
+
+            <a href="/listings?category=beach" class="filter-item <%= category === 'beach' ? 'active' : '' %>">
+                <i class="fa-solid fa-umbrella-beach"></i>
+                <span>Beach</span>
+            </a>
+
+            <a href="/listings?category=city" class="filter-item <%= category === 'city' ? 'active' : '' %>">
+                <i class="fa-solid fa-city"></i>
+                <span>City</span>
+            </a>
+
+            <a href="/listings?category=nature" class="filter-item <%= category === 'nature' ? 'active' : '' %>">
+                <i class="fa-solid fa-tree"></i>
+                <span>Nature</span>
+            </a>
+
+            <a href="/listings?category=desert" class="filter-item <%= category === 'desert' ? 'active' : '' %>">
+                <i class="fa-solid fa-sun"></i>
+                <span>Desert</span>
+            </a>
+
+            <a href="/listings?category=farm" class="filter-item <%= category === 'farm' ? 'active' : '' %>">
+                <i class="fa-solid fa-tractor"></i>
+                <span>Farm</span>
+            </a>
+
+
+        </div>
+
+        <h3 class="page-title">All Hotels</h3>
+
+
+        <!-- LISTINGS -->
+        <% if (allListings.length===0) { %>
+            <div class="no-results">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <h3>No listings found</h3>
+                <p>
+                    We couldn’t find any places for
+                    <strong>
+                        <%= category ? category : "this selection" %>
+                    </strong>.
+                </p>
+                <a href="/listings" class="reset-filter">Show all listings</a>
+            </div>
+            <% } else { %>
+                <div class="listings-grid">
+                    <% for (let listing of allListings) { %>
+                        <a href="/listings/<%= listing._id %>" class="listing-card">
+                            <div class="listing-img">
+                                <img src="<%= listing.image.url %>" alt="hotel">
+                            </div>
+                            <div class="listing-info">
+                                <h4>
+                                    <%= listing.title %>
+                                </h4>
+                                <p class="location">
+                                    <%= listing.location || "India" %>
+                                </p>
+                                <p class="price">₹ <%= listing.price %> / night</p>
+                            </div>
+                        </a>
+                        <% } %>
+                </div>
+                <% } %>
+
+    </section>

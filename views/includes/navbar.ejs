@@ -1,0 +1,48 @@
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top custom-navbar">
+  <div class="container-fluid">
+
+    <a class="navbar-brand" href="/">
+      <i class="fa-solid fa-compass"></i>
+      <span class="brand-text">Wanderlust</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+      <!-- 🔍 SEARCH BAR -->
+      <form class="d-flex mx-auto navbar-search" action="/listings" method="GET">
+        <input
+          class="form-control search-input"
+          type="search"
+          name="search"
+          placeholder="Search destinations"
+          aria-label="Search"
+          value="<%= typeof search !== 'undefined' ? search : '' %>"
+        >
+        <button class="btn search-btn" type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+
+      <!-- NAV LINKS -->
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/listings">All Listings</a>
+
+        <% if (currentUser) { %>
+          <a class="nav-link add-listing" href="/listings/new">Add New Listing</a>
+          <a class="nav-link text-danger" href="/logout">Logout</a>
+        <% } else { %>
+          <a class="nav-link" href="/login">Login</a>
+          <a class="nav-link" href="/signup">Sign Up</a>
+        <% } %>
+      </div>
+
+    </div>
+  </div>
+</nav>
+

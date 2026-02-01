@@ -1,0 +1,81 @@
+<!-- <% layout("/layouts/boilerplate") %>
+<body>
+    <form action="/listings" method="POST">
+        <input type="text" name="listing[title]" placeholder="enter the title"><br><br>
+        <textarea name="listing[description]" placeholder="enter the description"></textarea><br><br>
+        <input type="text" placeholder="enter the url of image" name="listing[image]"><br><br>
+        <input type="number" name="listing[price]" placeholder="enter your price"><br><br>
+        <input type="text" name="listing[location]" placeholder="enter your location"><br><br>
+        <input type="text" name="listing[country]" placeholder="enter your country"><br><br>
+        <button>add</button>
+    </form>
+    
+</body> -->
+
+<% layout("/layouts/boilerplate") %>
+
+  <section class="form-section">
+    <div class="form-card">
+      <h2>Add New Listing</h2>
+
+      <form action="/listings" method="POST" class="listing-form needs-validation" novalidate
+        enctype="multipart/form-data">
+        <div>
+          <label>Title</label>
+          <input type="text" name="listing[title]" placeholder="Cozy mountain stay" required />
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+
+        <div>
+          <label>Description</label>
+          <textarea name="listing[description]" rows="4" placeholder="Describe your place" required></textarea>
+          <div class="invalid-feedback">Please provide some brief Description</div>
+        </div>
+
+        <div>
+          <label>Category</label>
+          <select name="listing[category]" required>
+            <option value="" disabled selected>Select a category</option>
+
+            <option value="mountain">🏔️ Mountain</option>
+            <option value="pool">🏊 Pool</option>
+            <option value="beach">🏖️ Beach</option>
+            <option value="city">🏙️ City</option>
+            <option value="nature">🌿 Nature</option>
+            <option value="desert">☀️ Desert</option>
+            <option value="farm">🚜 Farm</option>
+          </select>
+
+          <div class="invalid-feedback">Please select a category</div>
+        </div>
+
+
+        <div>
+          <label>Upload Image</label>
+          <input type="file" name="listing[image]" required />
+          <div class="invalid-feedback">Please provide an url</div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <label>Price (₹ / night)</label>
+            <input type="number" name="listing[price]" placeholder="3500" required />
+            <div class="invalid-feedback">Please provide suitable Price</div>
+          </div>
+          <div>
+            <label>Location</label>
+            <input type="text" name="listing[location]" placeholder="Manali" required />
+            <div class="invalid-feedback">Please provide the location</div>
+          </div>
+        </div>
+
+        <div>
+          <label>Country</label>
+          <input type="text" name="listing[country]" placeholder="India" required />
+          <div class="invalid-feedback">Please select the Country</div>
+        </div>
+
+        <button class="submit-btn">Add Listing</button>
+      </form>
+    </div>
+  </section>
